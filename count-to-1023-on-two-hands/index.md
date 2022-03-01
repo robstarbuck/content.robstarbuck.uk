@@ -12,11 +12,11 @@ This is a brief whistle-stop tour of a JS project that converts a number to it's
 
 Let's start with a single closed fist as our 0, you can click the fingers or adjust the input to change the value.
 
-{{< iframe "https://robstarbuck.github.io/finbin/?initialBinaryValue=0&maxBinaryValue=31" "Fin" >}}
+{{< iframe "https://robstarbuck.github.io/finbin/?initialBinaryValue=0&maxBinaryValue=31" "Starting from zero" >}}
 
-I'm sure you're getting the gist'. Wherever a finger is extended we count the digit in our calculation. Let's represent that most rock-and-roll of numbers, 18.
+I'm sure you're getting the gist. Wherever a finger is extended we count the digit in our calculation. Let's represent that most rock-and-roll of numbers, 18.
 
-{{< iframe "https://robstarbuck.github.io/finbin/?lockValue=true&maxBinaryValue=18" "Fin" >}}
+{{< iframe "https://robstarbuck.github.io/finbin/?lockValue=true&maxBinaryValue=18" "The number 18" >}}
 
 Translating the decimal value "18" to it's binary value "10010" looks like this:
 
