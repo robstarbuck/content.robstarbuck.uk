@@ -5,7 +5,7 @@ title: Count to 1023 on Two Hands
 
 # 1023 on two hands
 
-__If you can accept that ten binary digits `1111111111` represents 1023 in decimal, we can of course use our ten fingers to represent any number counting upto it.__
+__If you can accept that ten binary digits `1111111111` represents 1023 in decimal, we can of course use our ten fingers to represent any number counting up to it.__
 
 {{< iframe "https://robstarbuck.github.io/finbin/" "Finger Binary" >}}
 
@@ -38,7 +38,7 @@ parseInt("10010", 2);
 
 The radix tells parseInt we're dealing with a binary number (2 numbers, 1 and 0) and not a decimal (10 numbers, 0-9, parseInt's default value).
 
-> Anyone who ever mistakenly tried `["1","2","3"].map(parseInt)` learnt the hardway about this second argument.
+> Anyone who ever mistakenly tried `["1","2","3"].map(parseInt)` learnt the hard way about this second argument.
 
 It is of course possible to derive our "18" value from an array of booleans:
 
@@ -50,7 +50,7 @@ But that's well covered ground and not what I'm exploring here. Instead we'll be
 
 ### Calculating the max value for a given number of fingers
 
-The maximum value that can be respresented by 10 fingers is 2 to the power of 10 minus one. Or `(2 ** 10) -1` in JS.
+The maximum value that can be represented by 10 fingers is 2 to the power of 10 minus one. Or `(2 ** 10) -1` in JS.
 
 The following chart shows the calculation for 2 to the power n.
 
@@ -67,7 +67,9 @@ So our tenth finger will represent the number 512 but this isn't our maximum as 
 // 1023
 ```
 
-Given this, it's easier to take our [11th value 1024](https://robstarbuck.github.io/finbin/?initialBinaryValue=1024&maxBinaryValue=2047) and minus one. There are a few ways to prove this using JS.
+To avoid totalling these numbers it's easier to take our [11th value 1024](https://robstarbuck.github.io/finbin/?initialBinaryValue=1024&maxBinaryValue=2047) and minus one. 
+
+We can the parity of these values can be proven in JS.
 
 ```js
 (1023).toString(2);
@@ -97,7 +99,7 @@ As we loop through the value of each finger we can use the **AND** [(&)][Bitwise
 
 {{< iframe "https://robstarbuck.github.io/finbin/?lockValue=true&maxBinaryValue=17" "The Knarly Number" >}}
 
-To get our `Result` in the following examples we use our operator "&" against each fingers corresponding `Value`. In decimal this would look like:
+To get our `Result` in the following examples we use our operator "&" against each finger's corresponding `Value`. In decimal this would look like:
 
 - `1 & 17`
 - `2 & 17`
@@ -113,7 +115,7 @@ Value (17)             10001   10001   10001   10001   10001
 Input & Value (Result) 00001   00000   00000   00000   10000
 Result === Input       TRUE    FALSE   FALSE   FALSE   TRUE
 ```
-I hope you can see what's happening here, wherever a 1 appears in same bit position for both the `Input` and the `Value` the result `Input & Value` gets a 1 in the same position. If the result matches the input we know that a finger should be extended. Let's run that calculation in JS to prove we're right.
+I hope you can see what's happening here, wherever a 1 appears in the same bit position for both the `Input` and the `Value` the result `Input & Value` gets a 1 in the same position. If the result matches the input we know that a finger should be extended. Let's run that calculation in JS to prove we're right.
 
 ```js
 [1,2,4,8,16].map(v => (v & 17) === v)
@@ -122,9 +124,9 @@ I hope you can see what's happening here, wherever a 1 appears in same bit posit
 
 ### Closing and extending fingers
 
-Our last task is closing and extending fingers or taking away and adding values. Let's say that we have a single hand with all of it's fingers extended giving us the number 31 or `11111` in binary. Let's close that most British of digits the pinky finger, represented by the number 16 or `10000`.
+Our last task is closing and extending fingers or taking away and adding values. Let's say that we have a single hand with all of it's fingers extended, giving us the number 31 or `11111` in binary. Let's close that most British of digits, the pinky finger, represented by the number 16 or `10000`.
 
-Our operator in this case will be **XOR** [(^)][Bitwise^], this retuns a `1` for every bit position where the values differ.
+Our operator in this case will be **XOR** [(^)][Bitwise^], this returns a `1` for every bit position where the values differ.
 
 ```
 Input (16)            10000
@@ -143,7 +145,7 @@ Value XOR Input (31)  11111
 
 # Summary
 
-We've proven that an array of boolean values can equally be represented by a single number. Whilst Bitwise operators provide a powerful toolset for manipulating that number it is not without it's limitations. The biggest limitation is number of elements (or fingers) we can represent. Because of JS's implmentation we are restricted to a maximum safe value of 9007199254740991 retrivable with the MAX_SAFE_INTEGER constant:
+We've proven that an array of boolean values can equally be represented by a single number. Whilst Bitwise operators provide a powerful toolset for manipulating that number it is not without its limitations. The biggest limitation is the number of elements (or fingers) we can represent. Because of JS's implmentation we are restricted to a maximum safe value of 9007199254740991, retrievable with the MAX_SAFE_INTEGER constant:
 
 ```js
 Number.MAX_SAFE_INTEGER
@@ -153,7 +155,7 @@ Number.MAX_SAFE_INTEGER
 
 These 52 `1`s represent 53 elements in an array, meaning we can safely operate on no larger number.
 
-Finally I'd be doubtful that anyone would thank you for the inclusion of bitwise operators in sourcecode, their usage is certainly a little obscure but they've been fun to play around with.
+Finally I'd be doubtful that anyone would thank you for the inclusion of bitwise operators in source code, their usage is certainly a little obscure but they've been fun to play around with.
 
 [BitwiseAnd]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Bitwise_AND
 [BitwiseOperators]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators#binary_bitwise_operators
