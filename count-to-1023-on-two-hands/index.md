@@ -3,8 +3,6 @@ date: 2022-03-01
 title: Count to 1023 on Two Hands
 ---
 
-# 1023 on two hands
-
 __If you can accept that ten binary digits `1111111111` represents 1023 in decimal, we can of course use our ten fingers to represent any number counting up to it.__
 
 {{< iframe "https://robstarbuck.github.io/finbin/" "Finger Binary" >}}
@@ -143,7 +141,7 @@ Input (16)            10000
 Value XOR Input (31)  11111  
 ```
 
-# Summary
+## Summary
 
 We've proven that an array of boolean values can equally be represented by a single number. Whilst Bitwise operators provide a powerful toolset for manipulating that number it is not without its limitations. The biggest limitation is the number of elements (or fingers) we can represent. Because of JS's implmentation we are restricted to a maximum safe value of 9007199254740991, retrievable with the MAX_SAFE_INTEGER constant:
 
