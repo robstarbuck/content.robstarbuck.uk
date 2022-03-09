@@ -9,7 +9,7 @@ date: 2022-03-09
 
 __Steganography the practice of hiding a message in something that is not secret. Certain unicode characters are zero-width, meaning that they won't be printed and can't be seen. Using these character we can encode characters and hide messages.__
 
-In this post I'll provide a quick explanation of some of the key aspects of [Z-Chars][Z-Chars Demo]. The post might interest JS devs who are curious about unicode and the bidirectional algorithm.
+In this post I'll provide a quick explanation of some of the key aspects of [Z-Chars][Z-Chars Demo]. The post might interest Javascript devs who are curious about unicode and the bidirectional algorithm.
 
 **POLITE NOTICE** There's enough trash on the web without hidden characters gumming up our messages, please don't use this in the wild.
 
@@ -17,7 +17,7 @@ In this post I'll provide a quick explanation of some of the key aspects of [Z-C
 
 Wherever text is represented digitally, it's likely to be encoded using Unicode. Some Unicode characters are intentionally invisible, a carriage return for example (`↵`) can't be seen although we can see it's effect. Such characters are known as [control characters][control-characters].
 
-Because not all languages read from left to right and some languages require special mark-up to ensure they run from right to left. Take the word "Egypt" as an example.
+Because not all languages read from left to right, some require special mark-up to ensure they run from right to left. Take the word "Egypt" as an example.
 
 {{< rawhtml half >}}
 <figure>
