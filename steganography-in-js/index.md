@@ -9,7 +9,7 @@ date: 2022-03-09
 
 __Steganography the practice of hiding a message in something that is not secret. Certain unicode characters are zero-width, meaning that they won't be printed and can't be seen. Using these character we can encode characters and hide messages.__
 
-In this post I'll provide a quick explanation of some of the key aspects of [Z-Chars][Z-Chars Demo]. The post might interest JS devs who are curious about unicode and the bidirectional algorhtym.
+In this post I'll provide a quick explanation of some of the key aspects of [Z-Chars][Z-Chars Demo]. The post might interest JS devs who are curious about unicode and the bidirectional algorithm.
 
 **POLITE NOTICE** There's enough trash on the web without hidden characters gumming up our messages, please don't use this in the wild.
 
@@ -44,7 +44,7 @@ U+202A   LEFT-TO-RIGHT EMBEDDING
 U+202B   RIGHT-TO-LEFT EMBEDDING
 U+202D   LEFT-TO-RIGHT OVERRIDE
 U+202E   RIGHT-TO-LEFT OVERRIDE
-	
+
 U+202C   POP DIRECTIONAL FORMATTING
 U+2069   POP DIRECTIONAL ISOLATE
 ```
@@ -61,7 +61,7 @@ I'm not going to be digging much into the details but hopefully the names alone 
 '\u2066\u2067\u2068\u202A\u202B\u202D\u202E\u202C\u2069'
 // "" [Nothing is visible]
 ```
-As you can see, our nine characters print as an empty string "". Now let's try to these characters between other letters.
+As you can see, our nine characters print as an empty string "". Now let's try to insert these characters between other letters.
 
 ```js
 'A' +
@@ -86,7 +86,7 @@ We now have the means to hide characters, all we need now is a way to encode the
 
 ## Encoding and Decoding
 
-So we have our three characters with which we can encode our hidden letters and this is great because if you have an understanding of binary, you'll know that we only need two `0` and `1`. Let's how we can use these two characters to represent the letter "X".
+So we have our three characters with which we can encode our hidden letters and this is great because if you have an understanding of binary, you'll know that we only need two `0` and `1`. Let's see how we can use these two characters to represent the letter "X".
 
 ```js
 "X".charCodeAt(0)
@@ -95,7 +95,7 @@ So we have our three characters with which we can encode our hidden letters and 
 // "1011000"
 ```
 
-`charCodeAt` gives us the unicode character reference for our letter, `toString(2)` then converts this to binary string or a number with a base of 2. To get back to our "X" we can use `fromCodePoint` to reverse the process.
+`charCodeAt` gives us the unicode character reference for our letter, `toString(2)` then converts this to a binary string or a number with a base of 2. To get back to our "X" we can use `fromCodePoint` to reverse the process.
 
 ```js
 parseInt("1011000",2)
