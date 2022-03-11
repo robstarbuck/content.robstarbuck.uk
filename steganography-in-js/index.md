@@ -172,11 +172,12 @@ Other than a few functions to split strings and interpolate the hidden character
 
 Please take a look through the [source code] if you're curiouser still.
 
-## Further reading
+## Links
 
 - [What every JavaScript developer should know about Unicode]
 - [An introduction to bidi markup]
 - [Unicode Bidirectional Algorithm]
+- [Z Cars theme music]
 
 [source code]: https://github.com/robstarbuck/z-chars
 [Z-Chars Demo]: https://robstarbuck.github.io/z-chars-demo/
@@ -186,3 +187,4 @@ Please take a look through the [source code] if you're curiouser still.
 [control-characters]: https://en.wikipedia.org/wiki/Control_character
 [What every JavaScript developer should know about Unicode]: https://dmitripavlutin.com/what-every-javascript-developer-should-know-about-unicode/
 [charCodeAt]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charCodeAt#examples
+[Z Cars theme music]: https://www.youtube.com/watch?v=wL1HnDGTAK8
