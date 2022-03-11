@@ -1,6 +1,6 @@
 ---
 title: Steganography with Zero Width Characters (Z-Chars)
-date: 2022-03-09
+date: 2022-03-10
 ---
 
 {{< rawhtml img >}}
