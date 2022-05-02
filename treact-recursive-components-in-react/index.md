@@ -233,7 +233,7 @@ Even when everything in your repo is screaming “TREE!” keeping data flat can
     {
         "id": "LETOTHEJUST",
         "fatherId": "THEOLDDUKE",
-        "name": "Paul Attreides"
+        "name": "Leto Attreides"
     },
     {
         "id": "MUADDIB",
