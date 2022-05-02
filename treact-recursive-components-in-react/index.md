@@ -24,11 +24,11 @@ As our subject is trees it’s their taxonomic rank that we’ll be exploring. T
 So an ash tree would come out as
 
 ```plain
-*1. Plantae
+1. Plantae
 	2. Lamiales
 		3. Oleaceae
 			4. Fraxinus
-				5. Fraxinus excelsior (Ash)*
+				5. Fraxinus excelsior (Ash)
 ```
 
 One common way to represent tree data is to nest the containing information. 
@@ -87,7 +87,7 @@ As such the Ash tree can be easily represented:
 }
 ```
 
-Certainly much easier to grok from my point of view and I’ll demonstrate further advantages later on. With our schema agreed upon (well I’m happy with it), let’s render it out in React.
+Certainly much easier to grok from my point of view and I’ll demonstrate further advantages later on. With our data model agreed upon (well I’m happy with it), let’s render it out in React.
 
 # A Basic Implementation
 
@@ -169,13 +169,13 @@ export default App;
 ```
 Here’s the same code on [github](https://github.com/robstarbuck/treact/blob/basic/src/App.tsx). 
 
-With a some bare minimum CSS we already have our tree rendering ever level of our taxa up to the tree itself, our leaf node.
+With minimal CSS we already have our tree rendering every level of our taxa up to the tree itself, our leaf node.
 
 ![Basic Screenshot](basic-screenshot.png)
 
 # Improvements
 
-Because we’ve kept our schema flat by abstracting the keys (in this case taxonomic ranks) we can modify which taxonomic ranks we iterate over. Currently we are recursing through "Kingdom", "Order", "Family", "Genus", "Species”. If we only want to observe the “Species” though, this can easily be achieved by passing it in to our initial Taxonomy. 
+Because we’ve kept our schema flat by abstracting the keys (in this case taxonomic ranks) we can modify which taxonomic ranks we view. Currently we are recursing through "Kingdom", "Order", "Family", "Genus", "Species”. If we only want to observe the “Species” though, this can easily be achieved by passing it in to our initial Taxonomy. 
 
 ```tsx
 function App() {
