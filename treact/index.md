@@ -1,6 +1,6 @@
 ---
 title: Treact - Recursive Components in React 
-date: 2022-03-10
+date: 2022-04-30
 ---
 
 React is ideally suited to the task of creating [trees](https://en.wikipedia.org/wiki/Tree_(data_structure)), being at its core, a tree of functions that call one another. In this demo we’ll look at creating a tree using a data set containing trees (of the Kingdom Plantae). Here’s the [demo](https://robstarbuck.github.io/treact/) that we are working towards.
