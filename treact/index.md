@@ -3,11 +3,11 @@ title: Treact - Recursive Components in React
 date: 2022-03-10
 ---
 
-React is ideally suited to the task of creating [trees](https://en.wikipedia.org/wiki/Tree_(data_structure)) being at its core, a tree of functions that call one another. In this demo we’ll look at creating a tree using a data set containing trees (of the Kingdom Plantae). Here’s the [demo](https://robstarbuck.github.io/treact/) that we are working towards.
+React is ideally suited to the task of creating [trees](https://en.wikipedia.org/wiki/Tree_(data_structure)), being at its core, a tree of functions that call one another. In this demo we’ll look at creating a tree using a data set containing trees (of the Kingdom Plantae). Here’s the [demo](https://robstarbuck.github.io/treact/) that we are working towards.
 
-![Master Screenshot](master-screenshot.png)
+{{< iframe "https://robstarbuck.github.io/treact/" "Finger Binary" >}}
 
-**DISCLAIMER** I opted for trees because I want to learn more about them, this was not done out of a desire to bend minds by creating a tree of trees with a tree of functions though I admit this amuses me. 
+**DISCLAIMER** I opted for trees to learn more about them, this was not done out of a desire to bend minds by creating a tree of trees with a tree of functions, though I admit it amuses me. 
 
 # Flat vs Nested Data
 
@@ -69,19 +69,13 @@ One common way to represent tree data is to nest the containing information.
 
 Whilst this seems a natural fit it has many disadvantages.
 
-1. The shape of the data is hard to work with, finding a leaf node (a tree) requires recursion.
-2. Each datum has no idea of its context, eg a species only knows its genus by knowing its parent.
-3. The hierarchy is very rigid, if we only want to look at everything beneath families we still need to go through the root *Plantae*.
+- **1.** The shape of the data is hard to work with, finding a leaf node (a tree) requires recursion.
+- **2.** Each datum has no idea of its context, eg a species only knows its genus by knowing its parent.
+- **3.** The hierarchy is very rigid, if we only want to look at everything beneath families we still need to go through the root *Plantae*.
 
-A more flexible approach is to keep our data flat. In this instance we already know the levels of our tree (the taxonomic ranks we’ll be using), this might not be true for other trees. A family tree for example could span any number of generations. Here however our levels are known.
+A more flexible approach is to keep our data flat. In this instance we already know the levels of our tree (the taxonomic ranks we’ll be using), this might not be true for other trees. A family tree for example could span any number of generations. Here however our levels are known to us in advance (those being Kingdom, Order, Family, Genus, Species)
 
-- Kingdom
-- Order
-- Family
-- Genus
-- Species
-
-As such the ash tree can be easily represented:
+As such the Ash tree can be easily represented:
 
 ```json
 {
@@ -93,7 +87,7 @@ As such the ash tree can be easily represented:
 }
 ```
 
-Certainly much easier to grok from my point of view and I’ll demonstrate further advantages later on. With out schema agreed upon (well I’m happy with it), let’s render it out in react.
+Certainly much easier to grok from my point of view and I’ll demonstrate further advantages later on. With our schema agreed upon (well I’m happy with it), let’s render it out in React.
 
 # A Basic Implementation
 
@@ -181,7 +175,7 @@ With a some bare minimum CSS we already have our tree rendering ever level of ou
 
 # Improvements
 
-Because we’ve kept our schema flat by abstracting the keys (in this case taxonomic ranks) we can modify which taxonomic ranks we iterate over. Currently we are recursing through "Kingdom", "Order", "Family", "Genus", "Species”. If we only want to observe the “Species” though this can easily be achieved by passing to our initial Taxonomy. 
+Because we’ve kept our schema flat by abstracting the keys (in this case taxonomic ranks) we can modify which taxonomic ranks we iterate over. Currently we are recursing through "Kingdom", "Order", "Family", "Genus", "Species”. If we only want to observe the “Species” though, this can easily be achieved by passing it in to our initial Taxonomy. 
 
 ```tsx
 function App() {
@@ -195,7 +189,7 @@ function App() {
 }
 ```
 
-With this in mind, it’s easy to see how `rank` may be stateful to allow users to limit the ranks being viewed.
+With this in mind, it’s easy to see how `rank` may be stateful, allowing users to limit the ranks being viewed.
 
 We can also opt to observe different keys of our trees, for instance Species is probably not all that useful to most people who know trees by their common names.
 
@@ -231,9 +225,9 @@ The complete source code for this project can be found in the [repo](https://git
 
 # Summary
 
-Even when everything in your repo is screaming “TREE!” keeping data flat can prove infinitely more flexible. In this instance we knew our groups in advance, where this might not be the case extra keys might indicate relationships between nodes.
+Even when everything in your repo is screaming “TREE!” keeping data flat can may prove more flexible. In this instance we knew our groups in advance, where this might not be the case extra keys might indicate relationships between nodes.
 
-```tsx
+```json
 [
     // ...
     {
@@ -256,4 +250,4 @@ Even when everything in your repo is screaming “TREE!” keeping data flat can
 
 Of course in an ordinary family tree there is more than one parent, I’ll skip over that.
 
-Owing to it’s nature Recursive Components are a really great fit for React, implementations that I’ve seen in Vue and Angular aren’t quite as comprehensive.
+Owing to React's nature Recursive Components are a good use case for the language and implementations that I’ve seen in Vue and Angular aren’t quite as comprehensive.
