@@ -13,11 +13,13 @@ React is ideally suited to the task of creating [trees](https://en.wikipedia.org
 
 As our subject is trees it’s their taxonomic rank that we’ll be exploring. There are many but we'll be using only a subset:
 
+```
 1. Kingdom
 2. Order
 3. Family
 4. Genus
 5. Species (or Common Name)
+```
 
 So an ash tree would come out as
 
