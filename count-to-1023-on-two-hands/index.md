@@ -67,7 +67,7 @@ So our tenth finger will represent the number 512 but this isn't our maximum as 
 
 To avoid totalling these numbers it's easier to take our [11th value 1024](https://robstarbuck.github.io/finbin/?initialBinaryValue=1024&maxBinaryValue=2047) and minus one. 
 
-We can the parity of these values can be proven in JS.
+The parity of these values can be proven in JS.
 
 ```js
 (1023).toString(2);
@@ -143,7 +143,7 @@ Value XOR Input (31)  11111
 
 ## Summary
 
-We've proven that an array of boolean values can equally be represented by a single number. Whilst Bitwise operators provide a powerful toolset for manipulating that number it is not without its limitations. The biggest limitation is the number of elements (or fingers) we can represent. Because of JS's implmentation we are restricted to a maximum safe value of 9007199254740991, retrievable with the MAX_SAFE_INTEGER constant:
+We've proven that an array of boolean values can equally be represented by a single number. Whilst Bitwise operators provide a powerful toolset for manipulating that number it is not without its limitations. The biggest limitation is the number of elements (or fingers) we can represent. Because of JS's implementation we are restricted to a maximum safe value of 9007199254740991, retrievable with the MAX_SAFE_INTEGER constant:
 
 ```js
 Number.MAX_SAFE_INTEGER
