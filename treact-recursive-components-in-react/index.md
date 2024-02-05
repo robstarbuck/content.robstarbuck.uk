@@ -3,13 +3,14 @@ title: Treact - Recursive Components in React
 date: 2022-04-30
 ---
 
-React is ideally suited to the task of creating [trees](https://en.wikipedia.org/wiki/Tree_(data_structure)), being at its core, a tree of functions that call one another. In this demo we’ll look at creating a tree using a data set containing trees (of the Kingdom Plantae). Here’s the [demo](https://robstarbuck.github.io/treact/) that we are working towards.
+React is ideally suited to the task of creating [trees](https://en.wikipedia.org/wiki/Tree_(data_structure)), being at its core, a tree of functions that call one another. In this demo we’ll look at creating a tree using a data set containing trees (of the Kingdom Plantae). So the theme is trees.
 
-{{< iframe "https://robstarbuck.github.io/treact/" "Finger Binary" >}}
+Here’s the [demo](https://robstarbuck.github.io/treact/) that we are working towards.
 
-**DISCLAIMER** I opted for trees to learn more about them, this was not done out of a desire to bend minds by creating a tree of trees with a tree of functions, though I admit it amuses me. 
+<iframe src="https://robstarbuck.github.io/treact/" title="Treact" style="aspect-ratio: 4 / 3">
+</iframe>
 
-# Flat vs Nested Data
+## Flat vs Nested Data
 
 As our subject is trees it’s their taxonomic rank that we’ll be exploring. There are many but we'll be using only a subset:
 
@@ -23,7 +24,7 @@ As our subject is trees it’s their taxonomic rank that we’ll be exploring. T
 
 So an ash tree would come out as
 
-```plain
+```
 1. Plantae
 	2. Lamiales
 		3. Oleaceae
@@ -89,11 +90,11 @@ As such the Ash tree can be easily represented:
 
 Certainly much easier to grok from my point of view and I’ll demonstrate further advantages later on. With our data model agreed upon (well I’m happy with it), let’s render it out in React.
 
-# A Basic Implementation
+## A Basic Implementation
 
 We can get a basic implementation working in 50 or so (readable) lines of Typescript.
 
-```tsx
+```jsx
 
 import "./App.css";
 import { FC } from "react";
@@ -130,24 +131,24 @@ const Taxonomy: FC<TaxonomyProps> = (props) => {
     <div>
       {/* Loop through the taxa in the rank */}
       {taxaInRank.map((taxon) => {
-        // Crucially we are only passing the taxa of this rank to the next Taxonomy
+
+        // We are only passing the taxa of this rank to the next Taxonomy
         // Without this filter, the component will call itself indefinitely
+
         const childrenOfTaxon = children.filter(
           (t) => t[rank] === taxon[rank]
         );
-        // By using the .at method typescript includes undefined in the type
-        // should our index not be in the array
-        // https://www.typescriptlang.org/play?target=9&ts=4.6.2#code/MYewdgzgLgBFDuIAyBTKUUCcIwLwwG0ByAQSIBoYiAhIgXQG4BYAKFYHp2ZRJYoALAJaYAJqnRYAXDGiZBYAOase0OENHiMmPHESasEAgCZGrDlxV91YtFpJRps+QpgAfGAFcwIlADN5KCLK4KoCwjYSmPY6CMi2BgB0AIZQABRGAJRAA
+
         const subRank = taxonomicRanks.at(taxonomicRanks.indexOf(rank) + 1);
+
         return (
-          // For those unfamilar with the element
-          // https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details
           <details open>
             <summary>
               {taxon[rank]}
             </summary>
-            {/* Should a subRank exist then render our taxonomy */}
-            {/* The element calls itself */}
+
+            {/* Here the element now calls itself */}
+
             {subRank && <Taxonomy rank={subRank}>{childrenOfTaxon}</Taxonomy>}
           </details>
         );
@@ -173,7 +174,7 @@ With minimal CSS we already have our tree rendering every level of our taxa up t
 
 ![Basic Screenshot](basic-screenshot.png)
 
-# Improvements
+## Improvements
 
 Because we’ve kept our schema flat by abstracting the keys (in this case taxonomic ranks) we can modify which taxonomic ranks we view. Currently we are recursing through "Kingdom", "Order", "Family", "Genus", "Species”. If we only want to observe the “Species” though, this can easily be achieved by passing it in to our initial Taxonomy. 
 
@@ -223,7 +224,7 @@ const taxaBySpecies: Array<TaxonomicRank> = [
 
 The complete source code for this project can be found in the [repo](https://github.com/robstarbuck/treact/).
 
-# Summary
+## Summary
 
 Even when everything in your repo is screaming “TREE!” keeping data flat can may prove more flexible. In this instance we knew our groups in advance, where this might not be the case extra keys might indicate relationships between nodes.
 

@@ -5,17 +5,18 @@ title: Count to 1023 on Two Hands
 
 __If you can accept that ten binary digits `1111111111` represents 1023 in decimal, we can of course use our ten fingers to represent any number counting up to it.__
 
-{{< iframe "https://robstarbuck.github.io/finbin/" "Finger Binary" >}}
+<iframe src="https://robstarbuck.github.io/finbin/" title="Finger Binary">
+</iframe>
 
 This is a brief whistle-stop tour of a JS project that converts a number to it's handy binary representation. In building it I learnt a little about JS [Bitwise Operators][BitwiseOperators] and their application. This post covers the utility of those operators and might interest any JS devs who are curious about their usage.
 
 Let's start with a single closed fist as our 0, you can click the fingers or adjust the input to change the value.
 
-{{< iframe "https://robstarbuck.github.io/finbin/?initialBinaryValue=0&maxBinaryValue=31" "Starting from zero" >}}
+<iframe src="https://robstarbuck.github.io/finbin/?initialBinaryValue=0&maxBinaryValue=31" title="Starting from Zero"></iframe>
 
 I'm sure you're getting the gist. Wherever a finger is extended we count the digit in our calculation. Let's represent that most rock-and-roll of numbers, 18.
 
-{{< iframe "https://robstarbuck.github.io/finbin/?lockValue=true&maxBinaryValue=18" "The number 18" >}}
+<iframe src="https://robstarbuck.github.io/finbin/?lockValue=true&maxBinaryValue=18" title="The number 18" ></iframe>
 
 Translating the decimal value "18" to it's binary value "10010" looks like this:
 
@@ -67,7 +68,7 @@ So our tenth finger will represent the number 512 but this isn't our maximum as 
 
 To avoid totalling these numbers it's easier to take our [11th value 1024](https://robstarbuck.github.io/finbin/?initialBinaryValue=1024&maxBinaryValue=2047) and minus one. 
 
-The parity of these values can be proven in JS.
+We can the parity of these values can be proven in JS.
 
 ```js
 (1023).toString(2);
@@ -95,7 +96,7 @@ Array(10)
 As we loop through the value of each finger we can use the **AND** [(&)][BitwiseAnd] bitwise operator to determine if a value is included in our total and therefore the applicable finger extended. This is completely different to the logical AND represented by "&&". We'll explore this problem for our most knarliest of numbers `17`.
 
 
-{{< iframe "https://robstarbuck.github.io/finbin/?lockValue=true&maxBinaryValue=17" "The Knarly Number" >}}
+<iframe src="https://robstarbuck.github.io/finbin/?lockValue=true&maxBinaryValue=17" title="The Knarly Number"></iframe>
 
 To get our `Result` in the following examples we use our operator "&" against each finger's corresponding `Value`. In decimal this would look like:
 

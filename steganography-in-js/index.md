@@ -3,9 +3,7 @@ title: Steganography with Zero Width Characters (Z-Chars)
 date: 2022-03-10
 ---
 
-{{< rawhtml img >}}
 <img src="https://user-images.githubusercontent.com/5805251/156551854-29ef4800-e455-4e86-bb98-deef7dd0d6b7.svg" style="width: 100%;height: 320px" />
-{{< /rawhtml >}}
 
 __Steganography the practice of hiding a message in something that is not secret. Certain unicode characters are zero-width, meaning that they won't be printed and can't be seen. Using these character we can encode characters and hide messages.__
 
@@ -19,18 +17,18 @@ Wherever text is represented digitally, it's likely to be encoded using Unicode.
 
 Because not all languages read from left to right, some require special mark-up to ensure they run from right to left. Take the word "Egypt" as an example.
 
-{{< rawhtml half >}}
-<figure>
-    <div>Egypt</div>
-    <code>⟶</code>
-    <figcaption>Latin characters read left to right</figcaption>
-</figure>
-<figure>
-    <div>مصر</div>
-    <code>⟵</code>
-    <figcaption>Arabic characters read right to left</figcaption>
-</figure>
-{{< /rawhtml >}}
+<div>
+    <figure>
+        <div>Egypt</div>
+        <code>⟶</code>
+        <figcaption>Latin characters read left to right</figcaption>
+    </figure>
+    <figure>
+        <div>مصر</div>
+        <code>⟵</code>
+        <figcaption>Arabic characters read right to left</figcaption>
+    </figure>
+</div>
 
 Computers need to know which direction these characters run in and one way to indicate this is with control characters.
 
@@ -149,7 +147,7 @@ Let's take another example by hiding "HIDDEN" within the word "VISIBLE". Because
 
 Here's a visualisation of the encoding:
 
-{{< rawhtml >}}
+<div>
 <figure>
     <span>V‭‭⁦⁦I‭‭⁦‪S‭‪‪‭I‭‪‪‭B‭‪‭⁦L‭‭‭⁦E⁩</span>
     <figcaption>Characters represented by zero-width characters</figcaption>
@@ -164,7 +162,7 @@ Here's a visualisation of the encoding:
     <span>V<code>H</code>I<code>I</code>S<code>D</code>I<code>D</code>B<code>E</code>L<code>N</code>E</span>
     <figcaption>Characters decoded</figcaption>
 </figure>
-{{< /rawhtml >}}
+</div>
 
 ## Summary
 
