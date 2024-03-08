@@ -7,7 +7,12 @@ React is ideally suited to the task of creating [trees](https://en.wikipedia.org
 
 Here’s the [demo](https://robstarbuck.github.io/treact/) that we are working towards.
 
-<iframe src="https://robstarbuck.github.io/treact/" title="Treact" style="aspect-ratio: 4 / 3">
+<iframe src="https://robstarbuck.github.io/treact/" title="Treact" style="aspect-ratio: 4 / 3"
+    data-breakout-url="employboy-demo"
+    data-breakout-class="full-page-iframe"
+    data-breakout-button-color="#0d95c0"
+
+>
 </iframe>
 
 ## Flat vs Nested Data
@@ -114,6 +119,30 @@ const taxonomicRanks: Array<TaxonomicRank> = [
   "Species"
 ];
 
+const renderTaxon = (taxon) => {
+
+  // We are only passing the taxa of this rank to the next Taxonomy
+  // Without this filter, the component will call itself indefinitely
+
+  const childrenOfTaxon = children.filter(
+    (t) => t[rank] === taxon[rank]
+  );
+
+  const subRank = taxonomicRanks.at(taxonomicRanks.indexOf(rank) + 1);
+
+  return (
+    <details open>
+      <summary>
+        {taxon[rank]}
+      </summary>
+
+      {/* Here the element now calls itself */}
+
+      {subRank && <Taxonomy rank={subRank}>{childrenOfTaxon}</Taxonomy>}
+    </details>
+  );
+}
+
 // Our recursive taxonomy which calls itself where child taxonomies exist
 const Taxonomy: FC<TaxonomyProps> = (props) => {
   const { children, rank } = props;
@@ -130,29 +159,7 @@ const Taxonomy: FC<TaxonomyProps> = (props) => {
   return (
     <div>
       {/* Loop through the taxa in the rank */}
-      {taxaInRank.map((taxon) => {
-
-        // We are only passing the taxa of this rank to the next Taxonomy
-        // Without this filter, the component will call itself indefinitely
-
-        const childrenOfTaxon = children.filter(
-          (t) => t[rank] === taxon[rank]
-        );
-
-        const subRank = taxonomicRanks.at(taxonomicRanks.indexOf(rank) + 1);
-
-        return (
-          <details open>
-            <summary>
-              {taxon[rank]}
-            </summary>
-
-            {/* Here the element now calls itself */}
-
-            {subRank && <Taxonomy rank={subRank}>{childrenOfTaxon}</Taxonomy>}
-          </details>
-        );
-      })}
+      {taxaInRank.map(renderTaxon)}
     </div>
   );
 };
@@ -252,3 +259,7 @@ Even when everything in your repo is screaming “TREE!” keeping data flat can
 Of course in an ordinary family tree there is more than one parent, I’ll skip over that.
 
 Owing to React's nature Recursive Components are a good use case for the language and implementations that I’ve seen in Vue and Angular aren’t quite as comprehensive.
+
+## Links
+
+- [Source Code](https://github.com/robstarbuck/treact/)
