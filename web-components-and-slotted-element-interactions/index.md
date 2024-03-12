@@ -122,7 +122,9 @@ The component acts in three stages.
 
 1. Applies a css transform to svg elements matching a selector
 2. On *mousemove* update the `--mouse-x` and `--mouse-y` variables
-3. On *mouseleave* remove the *mousemove* listener
+3. On *mouseleave* reset the position of the image
+
+Similar instruction occurs for touch events.
 
 It's important to know that whilst web-components with a shadow-dom *do* encapsulate style there are some inherited properties. I believe the complete list is:
 
@@ -169,16 +171,17 @@ element.style.setProperty("transform", "var(--set-foreground)");
 All that's left now is to set `--mouse-x` and `--mouse-y` whenever mousemove fires within the component. We will also need to reset the values on `mouseleave` to restore the image to it's previous state.
 
 ```typescript
-svg.addEventListener("mousemove", this._handleMouseMove);
+svg.addEventListener("mousemove", this._handleMove);
 
 svg.addEventListener("mouseleave", this._resetPosition);
 ```
 
 Things get a little more complicated from here but this is really where the walk-through stops. In brief the complicated elements are:
 
-**[Throttling](https://github.com/robstarbuck/lib.robstarbuck.uk/blob/main/src/utils/throttle.ts)** For performance reasons I don't want to adjust for every single movement of the mouse so the change is throttled to 1/8th of a second (125ms). The css `transform` property is included as a `transition` in order that it's animated and smooth.
-
 **[Transform Correction](https://github.com/robstarbuck/lib.robstarbuck.uk/blob/main/src/components/mouse-parallax/index.ts#L31-L45)** Because we're moving between absolute values (the position of our mouse) and relative values (the viewport of our SVG) we need to correct for how much we adjust our `--mouse-x`. Without this adjustment the parallax effect would vary when the size of the svg changes. Adjusting for the SVG's viewport corrects this.
+
+**[Easing](https://github.com/robstarbuck/lib.robstarbuck.uk/blob/main/src/components/mouse-parallax/index.ts#L82-L94)** To avoid the position of elements snapping as when triggered, we are gradually easing in the effect on each movement.
+
 
 The web-component itself was rolled in Google's [Lit](https://lit.dev/), and developed using [Storybook](https://storybook.js.org/) as an environment. Lit is a joy to work with as I imagine are many of [the libraries](https://github.com/web-padawan/awesome-web-components?tab=readme-ov-file#class-based) available for developing web-components.
 
