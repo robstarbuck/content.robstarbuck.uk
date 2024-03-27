@@ -17,14 +17,14 @@ Wherever text is represented digitally, it's likely to be encoded using Unicode.
 
 Because not all languages read from left to right, some require special mark-up to ensure they run from right to left. Take the word "Egypt" as an example.
 
-<div>
+<div class="colx2">
     <figure>
-        <div>Egypt</div>
+        <div class="text">Egypt</div>
         <code>⟶</code>
         <figcaption>Latin characters read left to right</figcaption>
     </figure>
     <figure>
-        <div>مصر</div>
+        <div class="text">مصر</div>
         <code>⟵</code>
         <figcaption>Arabic characters read right to left</figcaption>
     </figure>
@@ -149,17 +149,17 @@ Here's a visualisation of the encoding:
 
 <div>
 <figure>
-    <span>V‭‭⁦⁦I‭‭⁦‪S‭‪‪‭I‭‪‪‭B‭‪‭⁦L‭‭‭⁦E⁩</span>
+    <span class="text">V‭‭⁦⁦I‭‭⁦‪S‭‪‪‭I‭‪‪‭B‭‪‭⁦L‭‭‭⁦E⁩</span>
     <figcaption>Characters represented by zero-width characters</figcaption>
 </figure>
 
 <figure>
-    <span>V<code>2200</code>I<code>2201</code>S<code>2112</code>I<code>2112</code>B<code>2120</code>L<code>2220</code>E</span>
+    <span class="text">V<code>2200</code>I<code>2201</code>S<code>2112</code>I<code>2112</code>B<code>2120</code>L<code>2220</code>E</span>
     <figcaption>Characters represented by 0,1,2</figcaption>
 </figure>
 
 <figure>
-    <span>V<code>H</code>I<code>I</code>S<code>D</code>I<code>D</code>B<code>E</code>L<code>N</code>E</span>
+    <span class="text">V<code>H</code>I<code>I</code>S<code>D</code>I<code>D</code>B<code>E</code>L<code>N</code>E</span>
     <figcaption>Characters decoded</figcaption>
 </figure>
 </div>
